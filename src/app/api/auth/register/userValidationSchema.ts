@@ -4,6 +4,7 @@ import Joi from "joi";
 export interface RegisterUser {
   email: string;
   password: string;
+  confirmPassword: string;
   firstName: string;
   lastName: string;
   gender: "male" | "female" | "other";
@@ -23,6 +24,11 @@ export const registerUserValidationSchema = Joi.object<RegisterUser>({
     .trim()
     .max(20)
     .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/),
+  confirmPassword: Joi.string()
+    .required()
+    .valid(Joi.ref("password")) // Ensure it matches `password`
+    .messages({ "any.only": "Passwords do not match" }),
+
   firstName: Joi.string().required().trim().min(2).max(55),
   lastName: Joi.string().required().trim().min(3).max(55),
   gender: Joi.string().required().trim().valid("male", "female", "other"),
