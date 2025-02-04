@@ -1,16 +1,16 @@
 "use client";
 
-import Intro from "@/components/pageComponent/Intro";
-import Sidebar from "@/components/pageComponent/Sidebar";
+
+import AddNewInterview from "@/components/pageComponent/AddNewInterview";
 import React from "react";
 
 function MainPage() {
     return (
         <>
-            <div className="grid grid-cols-12 h-screen">
-                <Sidebar />
-                <Intro />
-                
+            <div >
+                {/* <Sidebar />
+                <Intro /> */}
+                <AddNewInterview />
             </div>
 
         </>

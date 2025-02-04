@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/navigation';
@@ -186,6 +187,24 @@ function Page({ className, ...props }: CardProps) {
             )}
           </div>
 
+          <div className='mb-4'>
+            <RadioGroup value={formik.values.gender}
+              onValueChange={(value) => formik.setFieldValue("gender", value)}>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="male" id="option-one" />
+                <Label htmlFor="option-one">Male</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="female" id="option-two" />
+                <Label htmlFor="option-two">Female</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="other" id="option-two" />
+                <Label htmlFor="option-two">Other</Label>
+              </div>
+            </RadioGroup>
+
+          </div>
           {/* Password */}
           <div className="mb-4">
             <Label htmlFor="password">Password</Label>
